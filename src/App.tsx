@@ -1,4 +1,5 @@
 import Header from './components/header'
+import Hero from './components/heroSection'
 
 function App() {
 
@@ -6,6 +7,8 @@ function App() {
     <body className='bg-background'>
       
       <Header />
+      <Hero />
+
     </body>
   )
 }
