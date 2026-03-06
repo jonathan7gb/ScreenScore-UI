@@ -1,5 +1,7 @@
-import ToggleThemeButton from "./toggleThemeButton";
-import HamburguerMenu from "./hamburguerMenu";
+import ToggleThemeButton from "./ToggleThemeButton";
+import HamburguerMenu from "./HamburguerMenu";
+import { Link } from "react-router-dom";
+
 
 
 function Header(){
@@ -10,7 +12,8 @@ function Header(){
             
             {/* DESKTOP MENU */}
             <div className="text-text hidden md:flex flex-row gap-10 items-center justify-center">
-                <a href="#" className="font-medium hover:underline transition-all">Filmes</a>
+                <Link to="/" className="font-medium hover:underline transition-all">Home</Link>
+                <Link to="/movies" className="font-medium hover:underline transition-all">Filmes</Link>
                 <ToggleThemeButton />
             </div>
 

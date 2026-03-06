@@ -1,19 +1,14 @@
-import Header from './components/header'
-import Hero from './components/heroSection'
-import FeaturedMovies from './components/FeaturedMovies'
-import Footer from './components/Footer'
+import { Routes, Route } from "react-router-dom";
+import Home from "./pages/Home";
+import Movies from "./pages/Movies";
 
 function App() {
-
   return (
-    <body className='bg-background'>
-      
-      <Header />
-      <Hero />
-      <FeaturedMovies />
-      <Footer />
-    </body>
-  )
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/movies" element={<Movies />} />
+    </Routes>
+  );
 }
 
-export default App
+export default App;

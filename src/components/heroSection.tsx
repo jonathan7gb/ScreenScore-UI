@@ -16,7 +16,7 @@ function Hero() {
                                 O ScreenScore é seu catálogo pessoal de filmes. Explore títulos, registre avaliações e acompanhe tudo que você já assistiu.
                             </p>
                         </div>
-                        <PrimaryButton text="Acessar Catálogo" link="#" />
+                        <PrimaryButton text="Acessar Catálogo" link="/movies" />
                     </div>
 
                 </div>

@@ -1,6 +1,6 @@
 import { Menu } from "lucide-react";
 import { useState } from "react";
-import ToggleThemeButton from "./toggleThemeButton";
+import ToggleThemeButton from "./ToggleThemeButton";
 
 function HamburguerMenu(){
     const [isOpen, setIsOpen] = useState(false);
