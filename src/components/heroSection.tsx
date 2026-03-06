@@ -1,3 +1,5 @@
+import PrimaryButton from "./PrimaryButton";
+
 function Hero() {
     return (
         <section>
@@ -14,7 +16,7 @@ function Hero() {
                                 O ScreenScore é seu catálogo pessoal de filmes. Explore títulos, registre avaliações e acompanhe tudo que você já assistiu.
                             </p>
                         </div>
-                            <a href="" className="bg-primary text-white text-lg p-2 rounded max-w-[200px] text-center transition-all duration-300 hover:bg-primary/75">Acessar Catálogo</a>
+                        <PrimaryButton text="Acessar Catálogo" link="#" />
                     </div>
 
                 </div>
