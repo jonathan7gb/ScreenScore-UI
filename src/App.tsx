@@ -1,5 +1,7 @@
 import Header from './components/header'
 import Hero from './components/heroSection'
+import FeaturedMovies from './components/FeaturedMovies'
+import Footer from './components/Footer'
 
 function App() {
 
@@ -8,7 +10,8 @@ function App() {
       
       <Header />
       <Hero />
-
+      <FeaturedMovies />
+      <Footer />
     </body>
   )
 }
