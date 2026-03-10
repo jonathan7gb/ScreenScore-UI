@@ -1,17 +1,16 @@
 import {Footer} from "../components/Footer";
 import {Header} from "../components/Header";
-import {FeaturedMovies} from "../components/FeaturedMovies";
 import {AllMovies} from "../components/AllMovies";
 
 function Movies() {
   return (
-     <body className='bg-background'>
+     <div className='bg-background min-h-screen'>
       
       <Header />
-      {/* <FeaturedMovies /> */}
       <AllMovies />
       <Footer />
-    </body>
+
+    </div>
   );
 }
 

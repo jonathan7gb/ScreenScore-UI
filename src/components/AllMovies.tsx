@@ -1,33 +1,86 @@
 import { MovieCard } from "./MovieCard"
+import { useState, useEffect } from 'react';
+import type { Movie } from '../types/Movie';
+import { getMovies } from "../services/api";
+import { SearchMovies } from "./SearchMovies";
 
-export function AllMovies(){
+export function AllMovies() {
+
+    const [movies, setMovies] = useState<Movie[]>([]);
+    const [loading, setLoading] = useState<boolean>(true);
+    const [error, setError] = useState<string | null>(null);
+    const [searchTerm, setSearchTerm] = useState<string>('minions')
+
+    useEffect(() => {
+        if (searchTerm.trim() === '') {
+            setMovies([]);
+            return;
+        }
+
+        const delaySearch = setTimeout(async () => {
+            try {
+                setLoading(true);
+                setError(null); 
+                const data = await getMovies(searchTerm);
+                setMovies(data);
+            } catch (err) {
+                console.error(err);
+                setError('Falha ao carregar a lista de filmes.');
+                setMovies([]); 
+            } finally {
+                setLoading(false);
+            }
+        }, 500);
+
+        return () => clearTimeout(delaySearch);
+        
+    }, [searchTerm]);
+
+    const filteredMovies = movies.filter((movie) =>
+        movie.title.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+
+
+    if (error) {
+        return <p className="text-center text-red-500 font-medium text-xl mt-16">{error}</p>;
+    }
+
     return (
         <section className="mt-16 px-4 md:px-8 lg:px-16">
             <h2 className="text-white text-3xl font-semibold">Todos os Filmes</h2>
+            {!loading && !error && (
+                <p className="text-white/50 text-md font-medium">{movies.length} Resultados encontrados</p>
+            )}
+            <SearchMovies 
+                    searchTerm={searchTerm} 
+                    onSearchChange={setSearchTerm} 
+                />
+
 
             <div className="mt-8">
-                <ul className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-4 lg:gap-8">
-
-                    <MovieCard src="https://cdn.cineart.com.br/vibezz_726218094.jpg" href="#" />
-                    <MovieCard src="https://ingresso-a.akamaihd.net/prd/img/movie/vitoria/19da6c0c-5916-4c2d-a5ea-a757958a721f.webp" href="#" />
-                    <MovieCard src="https://revistarecorte.com.br/wp-content/uploads/2025/01/2_anora_guskondo_cartazes-favoritos-1000x1481.jpg" href="#" />
-                    <MovieCard src="https://salvadorshopping.com.br/storage/cinema/4e37e5ca-5b88-4eee-8bee-07842a605e2f.webp" href="#" />
-                    <MovieCard src="https://ingresso-a.akamaihd.net/prd/img/movie/a-forja-o-poder-da-transformacao/af623e40-b2c6-459e-ab40-db71808757ea.webp" href="#" />
-                    <MovieCard src="https://images.squarespace-cdn.com/content/v1/540e5d44e4b03111c0805763/be850342-a3eb-4600-aee2-99c64a187bfb/Poster-Final---O-Agente-Secreto-%2864x94cm%29.jpg" href="#" />
-                    <MovieCard src="https://revistarecorte.com.br/wp-content/uploads/2025/01/2_anora_guskondo_cartazes-favoritos-1000x1481.jpg" href="#" />
-                    <MovieCard src="https://static3.moviehub.com.br/fotos/filmes/poster/16692_medio.jpg" href="#" />
-                    <MovieCard src="https://cdn.cineart.com.br/vibezz_726218094.jpg" href="#" />
-                    <MovieCard src="https://revistarecorte.com.br/wp-content/uploads/2025/01/2_anora_guskondo_cartazes-favoritos-1000x1481.jpg" href="#" />
-                    <MovieCard src="https://ingresso-a.akamaihd.net/prd/img/movie/a-forja-o-poder-da-transformacao/af623e40-b2c6-459e-ab40-db71808757ea.webp" href="#" />
-                    <MovieCard src="https://revistarecorte.com.br/wp-content/uploads/2025/01/2_anora_guskondo_cartazes-favoritos-1000x1481.jpg" href="#" />
-                    <MovieCard src="https://static3.moviehub.com.br/fotos/filmes/poster/16692_medio.jpg" href="#" />
-                    <MovieCard src="https://revistarecorte.com.br/wp-content/uploads/2025/01/2_anora_guskondo_cartazes-favoritos-1000x1481.jpg" href="#" />
-                    <MovieCard src="https://cdn.cineart.com.br/vibezz_726218094.jpg" href="#" />
-                    <MovieCard src="https://images.squarespace-cdn.com/content/v1/540e5d44e4b03111c0805763/be850342-a3eb-4600-aee2-99c64a187bfb/Poster-Final---O-Agente-Secreto-%2864x94cm%29.jpg" href="#" />
-                    <MovieCard src="https://dm0fzqdup5a0q.cloudfront.net/wp-content/uploads/2023/08/28181130/unnamed.png" href="#" />
-                    <MovieCard src="https://ingresso-a.akamaihd.net/prd/img/movie/a-forja-o-poder-da-transformacao/af623e40-b2c6-459e-ab40-db71808757ea.webp" href="#" />
-
-                </ul>
+                {loading ? (
+                    <div className="items-center gap-4 flex flex-row justify-center mt-16">
+                        <svg className="size-8 animate-spin text-primary dark:text-primary" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                            <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                            <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                        </svg>
+                        <p className="font-medium text-gray-700 dark:text-gray-200 text-md">Buscando Filmes...</p>
+                    </div>
+                ) : error ? (
+                    <p className="text-center text-red-500 font-medium text-xl mt-16">{error}</p>
+                ) : movies.length === 0 ? (
+                    <p className="text-gray-400 text-center mt-12">Nenhum filme encontrado para "{searchTerm}".</p>
+                ) : (
+                    <ul className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-4 lg:gap-8">
+                        {movies.map((movie) => (
+                            <MovieCard 
+                                key={movie.id}
+                                src={`https://image.tmdb.org/t/p/w500${movie.posterImage}`} 
+                                href="#" 
+                            />
+                        ))} 
+                    </ul>
+                )}
             </div>
         </section>
     )

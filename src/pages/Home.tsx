@@ -6,13 +6,12 @@ import { Footer } from '../components/Footer'
 function Home() {
 
   return (
-    <body className='bg-background'>
-      
+    <div className='bg-background'>
       <Header />
       <Hero />
       <FeaturedMovies />
       <Footer />
-    </body>
+    </div>
   )
 }
 
