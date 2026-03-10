@@ -1,5 +1,5 @@
 
-function FeaturedMovies(){
+export function FeaturedMovies(){
     return (
         <section className="mt-16 px-4 md:px-8 lg:px-16">
             <h2 className="text-white text-3xl font-semibold">Filmes em Destaque</h2>
@@ -55,5 +55,3 @@ function FeaturedMovies(){
         </section>
     )
 }
-
-export default FeaturedMovies;

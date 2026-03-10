@@ -1,6 +1,6 @@
-import PrimaryButton from "./PrimaryButton";
+import { PrimaryButton } from "./PrimaryButton"
 
-function Hero() {
+export function Hero() {
     return (
         <section>
             <div className=" mt-8 max-w-7xl px-4 py-8 sm:px-6 lg:px-16">
@@ -25,4 +25,3 @@ function Hero() {
     )
 }
 
-export default Hero;

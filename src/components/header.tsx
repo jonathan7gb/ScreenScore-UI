@@ -1,10 +1,10 @@
-import ToggleThemeButton from "./ToggleThemeButton";
-import HamburguerMenu from "./HamburguerMenu";
+import { ToggleThemeButton } from "./ToggleThemeButton";
+import { HamburguerMenu } from "./HamburguerMenu";
 import { Link } from "react-router-dom";
 
 
 
-function Header(){
+export function Header(){
     return ( 
     <header className="py-6 px-4 lg:px-16 lg:py-8 border-b border-primary/25">
         <div className="flex flex-row justify-between items-center font-sans">
@@ -24,5 +24,3 @@ function Header(){
     </header>
     )
 }
-
-export default Header;

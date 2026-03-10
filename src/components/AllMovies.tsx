@@ -1,5 +1,5 @@
 
-function AllMovies(){
+export function AllMovies(){
     return (
         <section className="mt-16 px-4 md:px-8 lg:px-16">
             <h2 className="text-white text-3xl font-semibold">Todos os Filmes</h2>
@@ -175,5 +175,3 @@ function AllMovies(){
         </section>
     )
 }
-
-export default AllMovies;

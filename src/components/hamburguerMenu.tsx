@@ -1,8 +1,8 @@
 import { Menu } from "lucide-react";
 import { useState } from "react";
-import ToggleThemeButton from "./ToggleThemeButton";
+import { ToggleThemeButton } from "./ToggleThemeButton";
 
-function HamburguerMenu(){
+export function HamburguerMenu(){
     const [isOpen, setIsOpen] = useState(false);
 
     return (
@@ -22,5 +22,3 @@ function HamburguerMenu(){
         </div>
     )
 }
-
-export default HamburguerMenu;

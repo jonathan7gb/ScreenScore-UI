@@ -1,4 +1,4 @@
-function Footer() {
+export function Footer() {
     return (
         <footer className="mt-24 border-t border-primary/25">
             <div className=" px-4 py-8 sm:px-6 lg:px-16">
@@ -15,5 +15,3 @@ function Footer() {
         </footer>
     )
 }
-
-export default Footer;
