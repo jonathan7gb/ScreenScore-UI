@@ -1,6 +1,6 @@
-import {Footer} from "../components/Footer";
 import {Header} from "../components/Header";
 import {AllMovies} from "../components/AllMovies";
+import {Footer} from "../components/Footer";
 
 function Movies() {
   return (

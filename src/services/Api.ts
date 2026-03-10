@@ -12,3 +12,9 @@ export const getMovies = async (title: string): Promise<Movie[]> => {
   
   return response.data.movies; 
 };
+
+export const getMovieDetail = async (movie_id: number): Promise<Movie> => {
+  const response = await api.get<Movie>(`/filmes/externos/${movie_id}`); 
+  
+  return response.data; 
+};
