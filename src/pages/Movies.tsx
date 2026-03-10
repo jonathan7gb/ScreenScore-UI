@@ -1,7 +1,7 @@
-import Footer from "../components/Footer";
-import Header from "../components/Header";
-import FeaturedMovies from "../components/FeaturedMovies";
-import AllMovies from "../components/AllMovies";
+import {Footer} from "../components/Footer";
+import {Header} from "../components/Header";
+import {FeaturedMovies} from "../components/FeaturedMovies";
+import {AllMovies} from "../components/AllMovies";
 
 function Movies() {
   return (
