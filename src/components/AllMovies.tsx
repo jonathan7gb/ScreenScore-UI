@@ -1,7 +1,7 @@
 import { MovieCard } from "./MovieCard"
 import { useState, useEffect } from 'react';
 import type { Movie } from '../types/Movie';
-import { getMovies } from "../services/api";
+import { getMovies } from "../services/Api";
 import { SearchMovies } from "./SearchMovies";
 
 export function AllMovies() {
@@ -76,7 +76,7 @@ export function AllMovies() {
                             <MovieCard 
                                 key={movie.id}
                                 src={`https://image.tmdb.org/t/p/w500${movie.posterImage}`} 
-                                href="#" 
+                                href={`/movie/${movie.id}`}
                             />
                         ))} 
                     </ul>
