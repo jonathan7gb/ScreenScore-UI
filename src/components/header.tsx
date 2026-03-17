@@ -1,5 +1,5 @@
-import { ToggleThemeButton } from "./ToggleThemeButton";
-import { HamburguerMenu } from "./HamburguerMenu";
+import { ToggleThemeButton } from "./ui/ToggleThemeButton";
+import { HamburguerMenu } from "./ui/HamburguerMenu";
 import { Link } from "react-router-dom";
 
 

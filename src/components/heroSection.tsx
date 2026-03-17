@@ -1,4 +1,4 @@
-import { PrimaryButton } from "./PrimaryButton"
+import { PrimaryButton } from "./ui/PrimaryButton"
 
 export function Hero() {
     return (
